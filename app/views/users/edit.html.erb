@@ -1,0 +1,17 @@
+
+<%=form_for @user do |f| %>
+  <div>
+    <%= f.label :first_name%>
+    <%= f.text_field :first_name%>
+  </div>
+  <div>
+    <%= f.label :last_name%>
+    <%= f.text_field :last_name%>
+  </div>
+  <div>
+    <%= f.label :email%>
+    <%= f.text_field :email%>
+  </div>
+  <%=f.submit "Confirm"%>
+
+<%end%>

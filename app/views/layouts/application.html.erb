@@ -9,6 +9,22 @@
   </head>
 
   <body>
+    <% if signed_in?%>
+      <%= link_to "sign out", sign_out_path, method: :delete%>
+    <% else %>
+      <%= link_to "sign in", sign_in_path%>
+    <% end %>
+    <div id="flash">
+      <% flash.each do |key, value| -%>
+        <% if key == "success"%>
+          <div id="flash_<%= key %>" class="alert alert-success" role="alert"><%=h value %></div>
+        <% elsif key == "notice" %>
+          <div id="flash_<%= key %>" class="alert alert-info" role="alert"><%=h value %></div>
+        <% else %>
+          <div id="flash_<%= key %>" class="alert alert-danger" role="alert"><%=h value %></div>
+        <% end %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
