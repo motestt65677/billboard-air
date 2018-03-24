@@ -6,6 +6,7 @@
         <div class="col-4">
           <p><strong>Title:</strong>  <%=board.title%></p>
           <p><strong>Description:</strong>  <%=board.description%></p>
+          <p><strong>Bid Price:</strong>  <%=board.current_price%></p>
           <p><strong><%=board.location%></strong> </p>
           <p><%=link_to "edit", edit_board_path(board)%></p>
           <p> <%=link_to "show", board_path(board)%></p>
