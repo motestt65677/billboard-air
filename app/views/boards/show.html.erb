@@ -11,9 +11,16 @@
   Location:
   <%=@board.location%>
 </div>
-<div>
-  Current Price:
-  <%=@board.current_price%>
-</div>
 
 <%=link_to "home", boards_path%>
+  <div>
+    <strong>Current_Price:</strong>
+    <span id="bid_table" data-room-number="<%=params[:id]%>">
+      <%=@board.current_price %>
+    </span>
+  </div>
+
+<%= form_tag "/boards/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
+  <%= number_field_tag :price, nil, id: "bid_price", class: "form-control" %>
+  <%= submit_tag "Submit", id: "submit_comment", data: { confirm: 'Are you sure?' }%>
+<% end %>   
