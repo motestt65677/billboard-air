@@ -1,0 +1,19 @@
+<h1>Board Show Page</h1>
+<div>
+  Board:
+  <%=@board.title%>
+</div>
+<div>
+  Description:
+  <%=@board.description%>
+</div>
+<div>
+  Location:
+  <%=@board.location%>
+</div>
+<div>
+  Current Price:
+  <%=@board.current_price%>
+</div>
+
+<%=link_to "home", boards_path%>
