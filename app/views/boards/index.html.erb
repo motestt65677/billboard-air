@@ -1,19 +1,13 @@
 <div class="container">
   <h1 class="align_center">Board Index</h1>
-  <div><%=link_to "new billboard", new_board_path%></div>
-  <div class="row">
-      <%@boards.each do |board|%>
-        <div class="col-4">
-          <p><strong>Title:</strong>  <%=board.title%></p>
-          <p><strong>Description:</strong>  <%=board.description%></p>
-          <p><strong><%=board.location%></strong> </p>
-          <p><%=link_to "edit", edit_board_path(board)%></p>
-          <p> <%=link_to "show", board_path(board)%></p>
-          <p> <%= link_to 'Delete', 
-                       board_path(board), 
-                                   method: :delete, 
-                                   data: { confirm: 'Are you sure?' } %></p>
-        </div>
-      <%end%>      
+  <div>
+    <%=link_to "new billboard", new_board_path%>
+    <%=form_tag search_boards_path, method: :post, remote: true do %>
+      <%=text_field_tag :search_result %>
+      <%=submit_tag "Look Up"%>
+    <%end%>
+  </div>
+  <div id="boards">
+    <%=render partial: "boards", locals: {boards: @boards}%>
   </div>
 </div>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: "sign_up"  
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   post "/boards/:id/bids" => "bids#create", as: "bid_create"
+  post "/boards/search" => "boards#search", as: "search_boards"
 
   mount ActionCable.server, at: '/cable'
 

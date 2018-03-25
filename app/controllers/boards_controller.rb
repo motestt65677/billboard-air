@@ -51,6 +51,14 @@ class BoardsController < ApplicationController
       redirect_to boards_path
     end 
   end
+
+  def search
+    @boards = Board.search_by_title_and_description(params[:search_result])
+    if params[:search_result] == ""
+      @boards = Board.all
+    end
+  end
+
   private
   def require_login
     user = User.find_by_id(session[:user_id])

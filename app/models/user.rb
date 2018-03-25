@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  has_many :authentications
-  has_many :bids
-  has_many :boards
+  has_many :authentications, dependent: :destroy
+  has_many :bids, dependent: :destroy
+  has_many :boards, dependent: :destroy
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
   end
