@@ -11,11 +11,13 @@ $(document).on('turbolinks:load', function() {
 
       setTimeout(function(){
         $("#bid_update").html(`the new bid price is now ${data.price}`);
+        document.getElementById("bid_update").classList.remove("hidden");
         document.getElementById("bid_update").classList.add("show");
       }, 1000);
 
       setTimeout(function(){
         setTimeout(function(){
+          document.getElementById("bid_update").classList.remove("show");
           document.getElementById("bid_update").classList.add("hidden");
         }, 1000)
       }, 10000);
