@@ -10,14 +10,11 @@ $(document).on('turbolinks:load', function() {
       document.getElementById("bid_table").appendChild(span);
 
       setTimeout(function(){
-        document.getElementById("bid_update").classList.remove("hidden");
-        document.getElementById("bid_update").classList.add("fade-in");
-
         $("#bid_update").html(`the new bid price is now ${data.price}`);
+        document.getElementById("bid_update").classList.add("show");
       }, 1000);
 
       setTimeout(function(){
-        document.getElementById("bid_update").classList.add("fade-out");
         setTimeout(function(){
           document.getElementById("bid_update").classList.add("hidden");
         }, 1000)
