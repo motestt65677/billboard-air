@@ -1,12 +1,13 @@
 <div class="container">
-  <h1 class="align_center">Board Index</h1>
-  <div>
-    <%=link_to "new billboard", new_board_path%>
+  <h1 class="align_center mt-5">Board Index</h1>
+  <div class="mt-3 mb-5">
     <%=form_tag search_boards_path, method: :post, remote: true do %>
-      <%=text_field_tag :search_result %>
+      <%=text_field_tag :search_result, nil, size:"80" %>
       <%=submit_tag "Look Up"%>
     <%end%>
+    <%=link_to "New Board", new_board_path, class:"float-right"%>
   </div>
+
   <div id="boards">
     <%=render partial: "boards", locals: {boards: @boards}%>
   </div>

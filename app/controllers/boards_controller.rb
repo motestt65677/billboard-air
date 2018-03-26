@@ -11,7 +11,9 @@ class BoardsController < ApplicationController
   end
 
   def create
+    byebug
     board = current_user.boards.new(board_params)
+    board.current_price = params[:board][:current_price].to_f
     if board.save
       flash[:success] = "billboard successfully created"
       redirect_to board_path(board)
@@ -69,6 +71,6 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :description, :location)
+    params.require(:board).permit(:title, :description, :location, :current_price, {images:[]})
   end
 end

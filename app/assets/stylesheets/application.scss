@@ -1,2 +1,12 @@
 @import "bootstrap";
 @import "boards";
+@import "nav";
+
+
+body{
+  font-family: 'Raleway', sans-serif;
+}
+
+form{
+  display: inline-block;
+}

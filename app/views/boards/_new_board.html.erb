@@ -13,7 +13,10 @@
   </div>
   <div>
     <%=f.label "Starting Price"%>
-    <%=f.text_field :current_price%>
+    <%=f.number_field :current_price%>
+  </div>
+  <div>
+    <%=f.file_field :images, multiple:true%>
   </div>
   <%=f.submit "create"%>  
 <%end%>

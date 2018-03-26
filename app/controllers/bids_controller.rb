@@ -3,7 +3,7 @@ class BidsController < ApplicationController
     board = Board.find(params[:id])
     bid = board.bids.new(price: params[:price])
     bid.user_id = current_user.id
-    if bid.price.to_i > board.current_price.to_i
+    if bid.price.to_f > board.current_price.to_f
       board.current_price = bid.price
       board.save
       if bid.save

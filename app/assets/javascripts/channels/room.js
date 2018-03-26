@@ -5,7 +5,7 @@ $(document).on('turbolinks:load', function() {
     disconnected: function() {},
     received: function(data) {
       span = document.createElement("span");
-      span.innerHTML = data.price
+      span.innerHTML = `$${data.price.toFixed(1)}`
       document.getElementById("bid_table").innerHTML = "";
       document.getElementById("bid_table").appendChild(span);
 
