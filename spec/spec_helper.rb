@@ -49,6 +49,8 @@ RSpec.configure do |config|
   config.default_formatter = 'doc' if config.files_to_run.one?
   config.order = :random
   Kernel.srand config.seed
+
+
   # config.profile_examples = 10
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
