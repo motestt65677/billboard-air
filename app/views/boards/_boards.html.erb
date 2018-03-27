@@ -1,16 +1,19 @@
 <div class="row">
   <%boards.each do |board|%>
-    <div class="col-4">
-      <p><strong>Title:</strong>  <%=board.title%></p>
-      <p><strong>Description:</strong>  <%=board.description%></p>
-      <p><strong>Bid Price:</strong>  <%=board.current_price%></p>
-      <p><strong><%=board.location%></strong> </p>
-      <p><%=link_to "edit", edit_board_path(board)%></p>
-      <p> <%=link_to "show", board_path(board)%></p>
-      <p> <%= link_to 'Delete', 
-                   board_path(board), 
-                               method: :delete, 
-                               data: { confirm: 'Are you sure?' } %></p>
+    <div class="col-3">
+      <%=link_to board_path(board), class:"list-group-item list-group-item-action list-group-item-light" do%>
+        <p><strong>Title:</strong>  <%=board.title%></p>
+        <p><strong>Location: </strong> <%=board.location%></p>
+        <p><strong>Bid Price:</strong>  <%=board.current_price%></p>
+      <%end%>
+      <p>&nbsp</p>
+      <%if current_user == board.user%>
+        <p> <%=link_to "edit", edit_board_path(board), class:"btn btn-outline-primary btn-block"%></p>
+        <p> <%= link_to 'Delete',
+              board_path(board), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-block" %></p>
+      <%end%>
     </div>
   <%end%> 
 </div>

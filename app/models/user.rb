@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_many :authentications, dependent: :destroy
   has_many :bids, dependent: :destroy
   has_many :boards, dependent: :destroy
+  validates :email, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
   end

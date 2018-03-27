@@ -1,26 +1,90 @@
-<h1>Board Show Page</h1>
-<div>
-  Board:
-  <%=@board.title%>
-</div>
-<div>
-  Description:
-  <%=@board.description%>
-</div>
-<div>
-  Location:
-  <%=@board.location%>
-</div>
+<div id="bid_update" class="alert alert-info hidden" role="alert">Welcome to <%=@board.title%></div>
+<main class="container">
+<div class="row">
+  <div class="col-6">
+    <div class="row">
+      <div class="col-6"><strong>Bid Price</strong></div>
+      <div class="col-6">
+        <span id="bid_table" data-room-number="<%=params[:id]%>">
+          $ <%=@board.current_price %>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <p><strong> Board:</strong></p>
+      </div>
+      <div class="col-6">
+        <p> <%=@board.title%></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <p><strong>Description:</strong></p>
+      </div>
+      <div class="col-6">
+        <p> <%=@board.description%></p>
+      </div>
+    </div>
 
-<%=link_to "home", boards_path%>
-  <div>
-    <strong>Current_Price:</strong>
-    <span id="bid_table" data-room-number="<%=params[:id]%>">
-      <%=@board.current_price %>
-    </span>
+    <div class="row">
+      <div class="col-6">
+        <p><strong>Location:</strong></p>
+      </div>
+      <div class="col-6">
+        <p> <%=@board.location%></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <p><strong>Bids: </strong></p>
+      </div>
+      <div class="col-6">
+        <p><%=@board.bids.count%> </p>
+      </div>
+    </div>
+
+    <div>
+      <%= form_tag "/boards/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
+        <%= number_field_tag :price, nil, id: "bid_price", class: "form-control" %>
+        <%= submit_tag "Submit", id: "submit_comment", data: { confirm: 'Are you sure?' }%>
+      <% end %>   
+    </div>
+
+
+
+
+  </div>
+  
+  <div class="col-6 align-center">
+    <%= render partial: '/boards/carousel', locals: {board: @board} %>              
+    
   </div>
 
-<%= form_tag "/boards/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
-  <%= number_field_tag :price, nil, id: "bid_price", class: "form-control" %>
-  <%= submit_tag "Submit", id: "submit_comment", data: { confirm: 'Are you sure?' }%>
-<% end %>   
+</div>
+
+
+</main>
+<!-- <div class="col-6 card mt-5" style = "padding:2%">
+  <div id="map">ASDF</div>
+</div> -->
+
+<!-- <script type="text/javascript">
+  function initMap() {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({"address":"<%#=@board.location%>"}, function(result, status){
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15, 
+        center: result[0].geometry.location
+      })
+      var marker = new google.maps.Marker({
+        position: result[0].geometry.location,
+        map: map
+      });
+    })
+  }
+</script>
+
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%#=ENV['GOOGLE_MAP_JAVASCRIPT_API']%>&callback=initMap">
+</script> -->
