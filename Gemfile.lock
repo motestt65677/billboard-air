@@ -373,6 +373,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    redis (4.0.1)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -479,6 +480,7 @@ DEPENDENCIES
   pg_search
   puma (~> 3.7)
   rails (~> 5.1.5)
+  redis
   rspec
   rspec-rails
   sass-rails (~> 5.0)
