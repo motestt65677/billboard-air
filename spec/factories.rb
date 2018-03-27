@@ -4,6 +4,7 @@ FactoryBot.define do
     email "asdf@gmail.com"
     first_name "John"
     last_name "White"
+    password_digest "asdfasdf"
   end
 
 

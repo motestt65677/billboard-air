@@ -15,10 +15,11 @@ class UsersController < ApplicationController
     
     if user.save
       flash[:success] = "user created"
-      redirect_to sign_in_path
+      session[:user_id] = user.id
+      redirect_to "/boards"
     else
       flash[:alert] = "something went wrong"
-      redirect_to "/"
+      redirect_to sign_up_path
     end
 
   end
