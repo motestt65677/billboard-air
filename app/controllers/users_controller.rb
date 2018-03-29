@@ -24,6 +24,12 @@ class UsersController < ApplicationController
 
   end
 
+  def update
+    user = User.find_by_id(params[:id])
+    user.update_attributes(user_params)
+    user.save
+    redirect_to "/boards"
+  end
 
   
 
