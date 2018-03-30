@@ -16,20 +16,38 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <ul class="navbar-nav">
+          <li class="nav-item active mr-5">
+            <a class="nav-link" href="/billboards">Home <span class="sr-only">(current)</span></a>
           </li>
         </ul>
-        <ul class="navbar-nav">
+        <%if current_user%>
+          <ul class="navbar-nav mr-5">
+            <li class="nav-item active">  
+              <a class="nav-link" href="/users/<%=current_user.id%>/boards">My Billboards</a>
+            </li>
+          </ul>        
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/users/<%=current_user.id%>/timeslots">My Auctions</a>
+            </li>
+          </ul>
+        <%end%>
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
+          </li>
+        </ul>
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">
             <% if signed_in?%>
               <%= link_to "sign out", sign_out_path, method: :delete, class:"nav-link"%>
             <% else %>
               <%= link_to "sign in", sign_in_path, class:"nav-link"%>
-            <% end %>            
+            <% end %>
           </li>
-        </ul>        
+        </ul>
+
       </div>
 
     </nav>    
@@ -54,5 +72,6 @@
       <% end %>
     </div>
     <%= yield %>
+
   </body>
 </html>

@@ -1,4 +1,4 @@
 class Bid < ApplicationRecord
   belongs_to :user
-  belongs_to :board
+  belongs_to :timeslot
 end

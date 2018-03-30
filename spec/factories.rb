@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :timeslot do
+    
+  end
 
   factory :user do
     email "asdf@gmail.com"
