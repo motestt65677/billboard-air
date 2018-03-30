@@ -36,6 +36,10 @@
 # ]
 
 # users = User.all
+# def image_rand
+#   number = (1..6).to_a
+#   image_data = File.open(Rails.root+ "app/assets/images/#{number.sample}.jpg")
+# end
 
 # 30.times do |t|
 #   Board.create(
@@ -43,21 +47,29 @@
 #     description: descriptions.sample,
 #     location: street_name.sample,
 #     current_price: rand(1..10)*100,
-#     user_id: users.sample.id
+#     user_id: 10,
+#     images: [image_rand]
 #   )
 # end
 
 
 
 
-def image_rand
-  number = (1..6).to_a
-  image_data = File.open(Rails.root+ "app/assets/images/#{number.sample}.jpg")
-end
 
-Board.all.each do |board|
+# Board.all.each do |board|
 
-  board.images = [image_rand]
-  # listing[:image].push(image_data)
-  board.save
+#   board.images = [image_rand]
+#   # listing[:image].push(image_data)
+#   board.save
+# end
+
+user = User.find(10)
+
+boards = user.boards
+
+5.times do |t|
+  boards.each do |board|
+    board.timeslots.create(start_date: Date.today, end_date: Date.today, current_price: rand(1..10)*100)
+  end
+
 end

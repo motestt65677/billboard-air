@@ -1,15 +1,13 @@
 @import "bootstrap";
 @import "boards";
 @import "nav";
-
+@import "welcome.scss";
+@import "sessions.scss";
 
 body{
   font-family: 'Raleway', sans-serif;
 }
 
-form{
-  display: inline-block;
-}
 
 .block{
   display: block;

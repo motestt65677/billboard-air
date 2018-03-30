@@ -1,3 +1,34 @@
-<h1>Board New Page</h1>
-<%=render partial: "new_board"%>
-<%=link_to "home", boards_path%>
+  <div class="container mt-10">
+    <%=form_for [@user, @board], :html => {class: "block"} do |f|%>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <h1>Add a New Billboard</h1>
+          <div>
+            <strong><%=f.label :title%><br></strong>
+            <%=f.text_field :title%>
+          </div>
+          <div>
+            <strong><%=f.label :description%><br></strong>
+            <%=f.text_area :description%>
+          </div>
+          <div>
+            <strong><%=f.label :location%><br></strong>
+            <%=f.text_field :location%>
+          </div>
+          <div>
+            <h5>Please add pictures of your billboards</h5>
+            <%=f.file_field :images, multiple:true%>
+          </div>
+          <div> 
+            <%=f.submit "create", class:"btn btn-secondary float-right"%><br>  
+            <%=link_to "back", user_boards_path%>
+          </div>
+        </div>
+        <div class="col-2"></div>
+
+      </div>  
+    <%end%>
+
+  </div>
+

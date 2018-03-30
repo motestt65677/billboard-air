@@ -1,0 +1,60 @@
+<div id="bid_update" class="alert alert-info" role="alert">Welcome to <%=@board.title%> Bidding</div>  
+
+<main class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="row">
+        <div class="col-6"><strong>Bid Price</strong></div>
+        <div class="col-6">
+          <span id="bid_table" data-room-number="<%=params[:id]%>">
+            $ <%=@timeslot.current_price %>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Bids: </strong></p>
+        </div>
+        <div class="col-6">
+          <p><%=@timeslot.bids.count%> </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong> Board:</strong></p>
+        </div>
+        <div class="col-6">
+          <p> <%=@board.title%></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Description:</strong></p>
+        </div>
+        <div class="col-6">
+          <p> <%=@board.description%></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong>Location:</strong></p>
+        </div>
+        <div class="col-6">
+          <p> <%=@board.location%></p>
+        </div>
+      </div>
+      <div>
+        <%= form_tag "/timeslot/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
+          <%= number_field_tag :price, nil, id: "bid_price", class: "form-control" %>
+          <%= submit_tag "Submit", id: "submit_comment", data: { confirm: 'Are you sure?' }%>
+        <% end %>   
+      </div>
+    </div>
+    <div class="col-6 align-center">
+      <%= render partial: '/boards/carousel', locals: {board: @board} %>              
+    </div>
+  </div>
+
+</main>
+
+

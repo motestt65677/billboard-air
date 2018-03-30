@@ -1,0 +1,19 @@
+<div class="row">
+  <%timeslots.each do |timeslot|%>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 .col-xl-2">
+      <%=link_to board_timeslot_path(timeslot.board, timeslot), class:"list-group-item list-group-item-action list-group-item-light" do%>
+        <p><strong>Title:</strong>  <%=timeslot.board.title%></p>
+        <p><strong>Location: </strong> <%=timeslot.board.location%></p>
+        <p><strong>Bid Price:</strong>  <%=timeslot.current_price%></p>
+      <%end%>
+      <p>&nbsp</p>
+      <%if user == timeslot.board.user%>
+        <p> <%=link_to "edit", edit_board_timeslot_path(timeslot.board, timeslot), class:"btn btn-outline-primary btn-block"%></p>
+        <p> <%= link_to 'Delete',
+              board_timeslot_path(timeslot.board, timeslot), 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-block" %></p>
+      <%end%>
+    </div>
+  <%end%> 
+</div>

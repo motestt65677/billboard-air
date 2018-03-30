@@ -2,12 +2,13 @@ class BoardsController < ApplicationController
   before_action :require_login
 
   def index
-    @boards = Board.order(:created_at)
-
+    @boards = Board.where(user_id: params[:user_id]).includes(:user)
+    @user = current_user
   end
 
   def new
     @board = Board.new()
+    @user = current_user
   end
 
   def create
@@ -15,10 +16,10 @@ class BoardsController < ApplicationController
     board.current_price = params[:board][:current_price].to_f
     if board.save
       flash[:success] = "billboard successfully created"
-      redirect_to board_path(board)
+      redirect_to user_board_path(board.user, board)
     else
       flash[:notice] = "something went wrong"
-      redirect_to new_board_path
+      redirect_to new_user_board_path(current_user)
     end
   end
 
@@ -70,6 +71,6 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :description, :location, :current_price, {images:[]})
+    params.require(:board).permit(:title, :description, :location, {images:[]})
   end
 end

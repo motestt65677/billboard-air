@@ -8,29 +8,29 @@
   width: 25em;
 }
 
-.show{
+.showbid{
   opacity: 0;
   position: relative;
-  -webkit-animation-name: show;
+  -webkit-animation-name: showbid;
   -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: forwards;
 
 }
 
-@-webkit-keyframes show {
+@-webkit-keyframes showbid {
   0%   { opacity: 0; }
   100% { opacity: 1; }
 }
 
-.hidden{
+.hiddenbid{
   opacity: 1;
   position: relative;
-  -webkit-animation-name: hidden;
+  -webkit-animation-name: hiddenbid;
   -webkit-animation-duration: 2s;
   -webkit-animation-fill-mode: forwards;
 }
 
-@-webkit-keyframes hidden {
+@-webkit-keyframes hiddenbid {
   0%   { opacity: 1; }
   100% { opacity: 0; }
 }
@@ -42,4 +42,8 @@
 
 #bid_table{
   font-size: 3em;
+}
+
+.text_box{
+  width:100%;
 }
