@@ -1,4 +1,4 @@
 $("#timeslots").html("");
-$("<%= j render(partial:'timeslots', locals: {timeslots: @timeslots})%>").appendTo("#timeslots");
+$("<%= j render(partial:'timeslots', locals: {timeslots: @timeslots, user: @user})%>").appendTo("#timeslots");
 
 
