@@ -92,4 +92,6 @@ Rails.application.configure do
 
   config.web_socket_server_url = "wss://billboard-air.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = ['https://billboard-air.herokuapp.com', 'http://billboard-air.herokuapp.com']
+  config.serve_static_assets = true
+  config.assets.compile = true
 end
