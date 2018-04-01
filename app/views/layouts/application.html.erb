@@ -54,12 +54,6 @@
 
 
 
-
-
-
-
-
-
     <div id="flash">
       <% flash.each do |key, value| -%>
         <% if key == "success"%>
@@ -71,6 +65,9 @@
         <% end %>
       <% end %>
     </div>
+    <%if @board && @timeslot%>
+      <div id="bid_update" class="alert alert-info" role="alert">Welcome to Auction for <strong>  <%=@board.title%></strong></div>  
+    <%end%>
     <%= yield %>
 
   </body>

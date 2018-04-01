@@ -1,6 +1,6 @@
 <main class="container mt-5 mb-5">
   <div class="row">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
       <div class="row">
         <div class="col-6">
           <p><strong> Board:</strong></p>
@@ -24,54 +24,31 @@
         <div class="col-6">
           <p> <%=@board.location%></p>
         </div>
+        <div class="col-12">
+          <div id="map">ASDF</div>
+        </div>
       </div>
     </div>
-    <div class="col-6 align-center">
-      <%= render partial: '/boards/carousel', locals: {board: @board} %>              
+    <div class="col-12 col-md-6 align-center mt-5">
+      <%= render partial: '/boards/carousel', locals: {board: @board} %><br>  
+      <%=link_to "Open New Auction", new_board_timeslot_path(@board), class:"btn btn-secondary btn-lg btn-block"%>
+
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-      <%=link_to "Add Timeslot", new_board_timeslot_path(@board)%>
     </div>
   </div>
 </main>
 
-    <!-- <div class="row">
-      <div class="col-6"><strong>Bid Price</strong></div>
-      <div class="col-6">
-        <span id="bid_table" data-room-number="<%=params[:id]%>">
-          $ <%#=@board.current_price %>
-        </span>
-      </div>
-    </div> -->
-<!--     <div class="row">
-      <div class="col-6">
-        <p><strong>Bids: </strong></p>
-      </div>
-      <div class="col-6">
-        <p><%#=@board.bids.count%> </p>
-      </div>
-    </div> -->
-
-<!--     <div>
-      <%#= form_tag "/boards/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
-        <%#= number_field_tag :price, nil, id: "bid_price", class: "form-control" %>
-        <%#= submit_tag "Submit", id: "submit_comment", data: { confirm: 'Are you sure?' }%>
-      <%# end %>   
-    </div> -->
 
 
 
 
-<!-- <div class="col-6 card mt-5" style = "padding:2%">
-  <div id="map">ASDF</div>
-</div> -->
-
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   function initMap() {
     var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({"address":"<%#=@board.location%>"}, function(result, status){
+    geocoder.geocode({"address":"<%=@board.location%>"}, function(result, status){
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15, 
         center: result[0].geometry.location
@@ -85,5 +62,5 @@
 </script>
 
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=<%#=ENV['GOOGLE_MAP_JAVASCRIPT_API']%>&callback=initMap">
-</script> -->
+  src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_JAVASCRIPT_API']%>&callback=initMap">
+</script>
