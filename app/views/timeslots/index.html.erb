@@ -3,7 +3,7 @@
   <div class="mt-3 mb-5">
     <%=form_tag search_timeslots_path, method: :post, remote: true do %>
       <%=text_field_tag :search_result, nil, size:"80", class:"text_box" %>
-      <%=submit_tag "Look Up"%>
+      <%=submit_tag "Look Up", class:"hidden_element"%>
     <%end%>
   </div>
   <div id="timeslots">

@@ -1,25 +1,31 @@
-<h1>Sign Up</h1>
-
-<%=form_for @user do |f| %>
-  <div>
-    <%= f.label :first_name%>
-    <%= f.text_field :first_name%>
+<main class="container mt-10">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <%=form_for @user do |f| %>
+        <div>
+          <strong>  <%= f.label :first_name%></strong><br>
+          <%= f.text_field :first_name, class:"text_box"%>
+        </div>
+        <div>
+          <strong>  <%= f.label :last_name%></strong><br>
+          <%= f.text_field :last_name, class:"text_box"%>
+        </div>
+        <div>
+          <strong>  <%= f.label :email%></strong><br>
+          <%= f.text_field :email, class:"text_box"%>
+        </div>
+        <div>
+          <strong>  <%= label_tag :password%></strong><br>
+          <%= password_field_tag :password, nil, class:"text_box"%>
+        </div>
+        <div>
+          <strong>  <%= label_tag "password_confirmation"%></strong><br>
+          <%= password_field_tag :password_confirmation,nil, class:"text_box"%>
+        </div>
+        <%=f.submit "Sign Up"%>
+      <%end%>
+    </div>
+    <div class="col-3"></div>
   </div>
-  <div>
-    <%= f.label :last_name%>
-    <%= f.text_field :last_name%>
-  </div>
-  <div>
-    <%= f.label :email%>
-    <%= f.text_field :email%>
-  </div>
-  <div>
-    <%= label_tag :password%>
-    <%= password_field_tag :password%>
-  </div>
-  <div>
-    <%= label_tag "password_confirmation"%>
-    <%= password_field_tag :password_confirmation%>
-  </div>
-  <%=f.submit "Sign Up"%>
-<%end%>
+</main>
