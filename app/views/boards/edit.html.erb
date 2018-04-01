@@ -1,2 +1,27 @@
-<h1>Board Edit Page</h1>
-<%=render partial: "edit_board"%>
+<main class="container mt-10">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <%=form_for [@user, @board] do |f|%>
+        <div>
+          <strong> <%=f.label :title%></strong>
+          <%=f.text_field :title, class:"text_box"%>
+        </div>
+        <div>
+          <strong> <%=f.label :description%></strong>
+          <%=f.text_field :description, class:"text_box"%>
+        </div>
+        <div>
+          <strong> <%=f.label :location%></strong>
+          <%=f.text_field :location, class:"text_box"%>
+        </div>
+        <div>
+          <p>Please add some images for your billboard.</p>
+          <%=f.file_field :images, multiple:true, class:"text_box"%>
+        </div>
+        <%=f.submit "Update"%>  
+      <%end%>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</main>
