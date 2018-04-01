@@ -6,19 +6,19 @@
           <h1>Add a New Billboard</h1>
           <div>
             <strong><%=f.label :title%><br></strong>
-            <%=f.text_field :title%>
+            <%=f.text_field :title, class:"text_box"%>
           </div>
           <div>
             <strong><%=f.label :description%><br></strong>
-            <%=f.text_area :description%>
+            <%=f.text_area :description, class:"text_box"%>
           </div>
           <div>
             <strong><%=f.label :location%><br></strong>
-            <%=f.text_field :location%>
+            <%=f.text_field :location, class:"text_box"%>
           </div>
           <div>
             <h5>Please add pictures of your billboards</h5>
-            <%=f.file_field :images, multiple:true%>
+            <%=f.file_field :images, multiple:true, class:"text_box"%>
           </div>
           <div> 
             <%=f.submit "create", class:"btn btn-secondary float-right"%><br>  
