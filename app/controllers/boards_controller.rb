@@ -29,14 +29,16 @@ class BoardsController < ApplicationController
 
   def edit
     @board = Board.find(params[:id])
+    @user = @board.user
   end
   
   def update
     board = Board.find(params[:id])
     board.update_attributes(board_params)
+
     if board.save
       flash[:success] = "billboard successfully updated"
-      redirect_to board_path(board)
+      redirect_to user_board_path(board.user, board)
     else
       flash[:notice] = "something went wrong"
       redirect_to edit_board_path(board)
@@ -45,12 +47,13 @@ class BoardsController < ApplicationController
 
   def destroy
     board = Board.find(params[:id])
+    user = board.user
     if board.destroy
       flash[:notice] = "billboard successfully deleted"
-      redirect_to boards_path
+      redirect_to user_boards_path(user)
     else
       flash[:notice] = "something went wrong"
-      redirect_to boards_path
+      redirect_to user_boards_path(user)
     end 
   end
 

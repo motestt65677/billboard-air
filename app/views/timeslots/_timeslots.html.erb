@@ -7,13 +7,7 @@
         <p><strong>Bid Price:</strong>  <%=timeslot.current_price%></p>
       <%end%>
       <p>&nbsp</p>
-      <%if user == timeslot.board.user%>
-        <p> <%=link_to "edit", edit_board_timeslot_path(timeslot.board, timeslot), class:"btn btn-outline-primary btn-block"%></p>
-        <p> <%= link_to 'Delete',
-              board_timeslot_path(timeslot.board, timeslot), 
-              method: :delete, 
-              data: { confirm: 'Are you sure?' }, class:"btn btn-outline-danger btn-block" %></p>
-      <%end%>
+
     </div>
   <%end%> 
 </div>

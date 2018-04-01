@@ -1,7 +1,6 @@
 class Board < ApplicationRecord
   belongs_to :user
   has_many :timeslots, dependent: :destroy
-  has_many :bids, dependent: :destroy
   validates :title, presence: true
   validates :current_price, presence: true
   validates :location, presence: true

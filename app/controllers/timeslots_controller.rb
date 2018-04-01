@@ -30,6 +30,8 @@ class TimeslotsController < ApplicationController
     @timeslot = Timeslot.find(params[:id])
   end
 
+
+
   def search
     boards = Board.search_by_title_and_description(params[:search_result])
     @timeslots = []
