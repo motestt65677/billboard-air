@@ -1,17 +1,30 @@
 
-<%=form_for @user do |f| %>
-  <div>
-    <%= f.label :first_name%>
-    <%= f.text_field :first_name%>
-  </div>
-  <div>
-    <%= f.label :last_name%>
-    <%= f.text_field :last_name%>
-  </div>
-  <div>
-    <%= f.label :email%>
-    <%= f.text_field :email%>
-  </div>
-  <%=f.submit "Confirm"%>
 
-<%end%>
+
+<main class="container mt-10">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <h7 >Welcome to BillBoardAir, Please confirm the following information before proceeding.</h7>
+
+      <%=form_for @user do |f| %>
+        <div class="mt-3">
+          <strong>  <%= f.label :first_name%></strong><br>
+          <%= f.text_field :first_name, class:"text_box"%>
+        </div>
+        <div>
+          <strong>  <%= f.label :last_name%></strong><br>
+          <%= f.text_field :last_name, class:"text_box"%>
+        </div>
+        <div>
+          <strong>  <%= f.label :email%></strong><br>
+          <%= f.text_field :email, class:"text_box"%>
+        </div>
+        <%=f.submit "Confirm"%>
+
+      <%end%>
+    
+    </div>
+    <div class="col-3"></div>
+  </div>
+</main>

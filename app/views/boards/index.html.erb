@@ -3,7 +3,7 @@
   <div class="mt-3 mb-5">
     <%=form_tag search_boards_path, method: :post, remote: true do %>
       <%=text_field_tag :search_result, nil, class:"text_box"%>  
-      <%=submit_tag "Look Up"%>
+      <%=submit_tag "Look Up", class:"hidden_element"%>
       <%=link_to "New Board", new_user_board_path(current_user), class:"float-right"%>    
     <%end%>
     
