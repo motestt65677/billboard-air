@@ -1,8 +1,11 @@
 
 <main class="container mt-5 mb-5">
   <div class="row">
+    <div class="col-12 col-md-8">
+      <%= render partial: '/boards/carousel', locals: {board: @board} %><br>
+    </div>
 
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-4 mt-5">
       <div class="row">
         <div class="col-6"><strong>Bid Price</strong></div>
         <div class="col-6">
@@ -12,18 +15,54 @@
         </div>
       </div>
 
+
       <div class="row">
         <div class="col-6">
           <p><strong>Bids: </strong></p>
         </div>
         <div class="col-6">
-          <p><%=@timeslot.bids.count%> </p>
+          <span id="bid_count">
+            <p><%=@timeslot.bids.count%> </p>
+          </span>
+        </div>
+      </div>
+      <%= form_tag "/timeslot/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
+        <%= number_field_tag :price, nil, id: "bid_price", class: "form-control text_box" %><br>
+        <%= submit_tag "Add a Bid", id: "submit_comment", data: { confirm: 'Are you sure?' }, class:"btn btn-secondary btn-lg btn-block"%>
+      <% end %>
+    </div>
+    <div class= "col-12">
+      <hr>
+      <h3>Overview</h3>
+      <div class="row">
+        <div class="col-6">
+          <p><strong> Time Span</strong></p>
+        </div>
+        <div class="col-6">
+          <p> <%=@timeslot.auction_span%> days</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p><strong> Start Date</strong></p>
+        </div>
+        <div class="col-6">
+          <p> <%=@timeslot.start_date%></p>
         </div>
       </div>
 
       <div class="row">
         <div class="col-6">
-          <p><strong> Board:</strong></p>
+          <p><strong> End Date</strong></p>
+        </div>
+        <div class="col-6">
+          <p> <%=@timeslot.end_date%></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <p><strong> Board</strong></p>
         </div>
         <div class="col-6">
           <p> <%=@board.title%></p>
@@ -32,7 +71,7 @@
 
       <div class="row">
         <div class="col-6">
-          <p><strong>Description:</strong></p>
+          <p><strong>Description</strong></p>
         </div>
         <div class="col-6">
           <p> <%=@board.description%></p>
@@ -41,7 +80,7 @@
 
       <div class="row">
         <div class="col-6">
-          <p><strong>Location:</strong></p>
+          <p><strong>Location</strong></p>
         </div>
         <div class="col-6">
           <p> <%=@board.location%></p>
@@ -53,18 +92,7 @@
           <div id="map">ASDF</div>
         </div>  
       </div>
-
-
-
     </div>
-    <div class="col-12 col-md-6 mt-5">
-      <%= render partial: '/boards/carousel', locals: {board: @board} %><br>
-        <%= form_tag "/timeslot/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
-          <%= number_field_tag :price, nil, id: "bid_price", class: "form-control text_box" %><br>
-          <%= submit_tag "Add a Bid", id: "submit_comment", data: { confirm: 'Are you sure?' }, class:"btn btn-secondary btn-lg btn-block"%>
-        <% end %>
-    </div>
-
   </div>
 
 
