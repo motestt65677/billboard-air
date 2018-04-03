@@ -9,7 +9,7 @@ class BidsController < ApplicationController
       timeslot.save
       if bid.save
         ActionCable.server.broadcast "room_channel_#{params[:id]}",
-          price:  bid.price
+          price:  bid.price, bid_count: timeslot.bids.count
       end
     else
       flash[:notice] = "your price is lower than current bid price"

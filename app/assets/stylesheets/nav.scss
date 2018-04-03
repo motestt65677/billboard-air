@@ -4,6 +4,35 @@
 // }
 
 
+@keyframes hide{
+  from{}
+  to{transform: translateY(-100%)}
+}
+
+@keyframes show{
+  from{transform: translateY(-100%)}
+  to{transform: translateY(0%)}
+}
+
+.hide-nav{
+  animation-name: hide;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.show-nav{
+    animation-name: show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+
+
+.navbar_hide{
+  transition: top 0.2s ease-in-out;
+  top: -40px;
+}
+
 .navbar {
   background-color: #563d7c;
 }

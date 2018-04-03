@@ -21,6 +21,10 @@ $(document).on('turbolinks:load', function() {
           document.getElementById("bid_update").classList.add("hiddenbid");
         }, 1000)
       }, 3000);
+
+      document.getElementById("bid_count").innerHTML = "";
+      document.getElementById("bid_count").innerHTML = data.bid_count;
+
     }
   });
 });
