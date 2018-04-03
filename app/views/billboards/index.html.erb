@@ -1,8 +1,7 @@
 <div class="container">
-  <h1 class="align_center mt-5">Billboards</h1>
-  <div class="mt-3 mb-5">
+  <div class="mt-3 mb-5 mt-5">
     <%=form_tag search_timeslots_path, method: :post, remote: true do %>
-      <%=text_field_tag :search_result, nil, class:"text_box" %>
+      <%=text_field_tag :search_result, nil, class:"text_box", placeholder:"Search billboards with location" %>
       <%=submit_tag "Look Up", class:"hidden_element"%>
     <%end%>
   </div>
