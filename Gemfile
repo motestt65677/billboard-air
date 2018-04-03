@@ -43,6 +43,7 @@ gem "fog-aws"
 gem 'fog'
 gem 'redis'
 gem 'geocoder'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

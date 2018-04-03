@@ -11,6 +11,7 @@ class BillboardsController < ApplicationController
     total_lat = 0
     total_long = 0
     @locations.each do |location|
+      p location
       total_lat = total_lat + location[0]
       total_long = total_long + location[1]
     end
