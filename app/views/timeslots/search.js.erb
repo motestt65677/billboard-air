@@ -2,3 +2,17 @@ $("#timeslots").html("");
 $("<%= j render(partial:'timeslots', locals: {timeslots: @timeslots, user: @user})%>").appendTo("#timeslots");
 
 
+setMapOnAll(null);
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 13, 
+  center: new google.maps.LatLng(<%=@average_lat%>, <%=@average_long%>) 
+})
+
+<%@locations.each do |location|%>
+  var marker = new google.maps.Marker({
+    position: {lat:<%=location[0]%>, lng:<%=location[1]%>},
+    map: map
+  });
+<%end%>
+
