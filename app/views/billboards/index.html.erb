@@ -26,9 +26,9 @@
       center: new google.maps.LatLng(<%=@average_lat%>, <%=@average_long%>) 
     })
     
-    <%@locations.each do |location|%>
+    <%@boards.each do |board|%>
       var marker = new google.maps.Marker({
-        position: {lat:<%=location[0]%>, lng:<%=location[1]%>},
+        position: {lat:<%=board.latitude%>, lng:<%=board.longitude%>},
         map: map
         
       });

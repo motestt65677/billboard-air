@@ -11,6 +11,24 @@ class Board < ApplicationRecord
   geocoded_by :location   
   after_validation :geocode  
 
+  def self.average_lat(boards)
+    total_lat = 0
+    boards.each do |board|
+      total_lat = total_lat + board.latitude
+    end
+    total_lat/boards.count
+  end
 
+  def self.average_long(boards)
+    total_long = 0
+    boards.each do |board|
+      total_long = total_long + board.longitude
+    end
+    total_long/boards.count
+  end
+
+
+
+    
 
 end
