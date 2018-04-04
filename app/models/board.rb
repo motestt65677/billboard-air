@@ -2,7 +2,6 @@ class Board < ApplicationRecord
   belongs_to :user
   has_many :timeslots, dependent: :destroy
   validates :title, presence: true
-  validates :current_price, presence: true
   validates :location, presence: true
   include PgSearch
   pg_search_scope :search_by_title_and_description, :against => [:title, :description, :location], :using => {:tsearch => {:prefix => true}}
@@ -27,7 +26,9 @@ class Board < ApplicationRecord
     total_long/boards.count
   end
 
-
+  def format_location(address)
+    self.location = "#{address[:street_address]}, #{address[:district]}, #{address[:city]}, #{address[:country]}"
+  end
 
     
 
