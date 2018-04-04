@@ -28,11 +28,8 @@ env :PATH, ENV['PATH']
 ENV['RAILS_ENV'] = "development"
 
 set :output, 'log/whenever.log'
+
 every 1.day, :at => '12:00 am' do
   rake "timeslots:update_status", :environment => 'development'
 end
 
-
-every 1.minute do
-  rake "timeslots:update_status", :environment => 'development'
-end
