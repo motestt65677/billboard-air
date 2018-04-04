@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
 
   def create
     board = current_user.boards.new(board_params)
-    board.current_price = params[:board][:current_price].to_f
+    board.format_location(params[:board][:location])
     if board.save
       flash[:success] = "billboard successfully created"
       redirect_to user_board_path(board.user, board)
