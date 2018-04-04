@@ -16,6 +16,7 @@ class TimeslotsController < ApplicationController
   def create
     board = Board.find(params[:board_id])
     timeslot = board.timeslots.new(timeslot_params)
+
     if timeslot.save
       flash[:success] = "timeslot successfully created"
       redirect_to board_timeslot_path(board, timeslot)
@@ -66,7 +67,7 @@ class TimeslotsController < ApplicationController
   private
 
   def timeslot_params
-    params.require(:timeslot).permit(:start_date, :end_date, :current_price)
+    params.require(:timeslot).permit(:start_date, :end_date, :current_price, :auction_start)
 
 
   end
