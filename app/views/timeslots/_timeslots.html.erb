@@ -1,10 +1,10 @@
 <div class="row">
   <%timeslots.each do |timeslot|%>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 .col-xl-2">
+    <div class="col-12 col-md-6">
       <%=link_to board_timeslot_path(timeslot.board, timeslot), class:"list-group-item list-group-item-action list-group-item-light" do%>
-        <p><strong>Title:</strong>  <%=timeslot.board.title%></p>
-        <p><strong>Location: </strong> <%=timeslot.board.location%></p>
-        <p><strong>Bid Price:</strong>  <%=timeslot.current_price%></p>
+        <p><strong><%=timeslot.board.title%></strong></p>
+        <p><%=image_tag "marker.png", class:"icon-sm"%> <%=timeslot.board.location%></p>
+        <p><%=image_tag "coin.png", class:"icon-sm"%>  <%=timeslot.current_price%></p>
       <%end%>
       <p>&nbsp</p>
 
