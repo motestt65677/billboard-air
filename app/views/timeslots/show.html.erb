@@ -12,7 +12,7 @@
       <div class="row ">
         <div class="col-12 align_center mb-3">
           <%if @timeslot.status == "pending"%>
-            <span class="auction-status">The auction will start on <%=@timeslot.start_date%></span>
+            <span class="auction-status">The auction will start on <%=@timeslot.auction_start%></span>
           <%elsif @timeslot.status == "live"%>
             <span class="auction-status green">LIVE - <%=@timeslot.calculate_days_left%> days left</span>
           <%elsif @timeslot.status == "end"%>
