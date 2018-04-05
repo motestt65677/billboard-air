@@ -2,7 +2,12 @@
   <%timeslots.each do |timeslot|%>
     <div class="col-12 col-md-6">
       <%=link_to board_timeslot_path(timeslot.board, timeslot), class:"list-group-item list-group-item-action list-group-item-light" do%>
-        <p><strong><%=timeslot.board.title%></strong></p>
+        <p>
+          <strong><%=timeslot.board.title%></strong>
+          <% if timeslot.status == "live"%>
+            <span class="badge badge-danger float-right">Live</span>
+          <%end%>
+        </p>
         <p><%=image_tag "marker.png", class:"icon-sm"%> <%=timeslot.board.location%></p>
         <p><%=image_tag "coin.png", class:"icon-sm"%>  <%=timeslot.current_price%></p>
       <%end%>

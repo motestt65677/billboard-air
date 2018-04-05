@@ -1,7 +1,7 @@
 
 <main class="container mt-5 mb-5">
   <div class="row">
-    <div class="col-12 col-md-8">
+    <div class="col-12 col-md-8 mt-3">
       <%= render partial: '/boards/carousel', locals: {board: @board} %><br>
     </div>
 
@@ -14,13 +14,16 @@
           <%if @timeslot.status == "pending"%>
             <span class="auction-status">The auction will start on <%=@timeslot.start_date%></span>
           <%elsif @timeslot.status == "live"%>
-            <span class="auction-status green">LIVE</span>
+            <span class="auction-status green">LIVE - <%=@timeslot.calculate_days_left%> days left</span>
           <%elsif @timeslot.status == "end"%>
             <span class="auction-status">The auction has ended</span>
           <%end%>
         </div>
 
       </div>
+      <h3>Auction</h3>
+      
+
 
       <div class="row">
         <div class="col-6"><strong>Bid Price</strong></div>
@@ -42,10 +45,22 @@
           </span>
         </div>
       </div>
+
       <%if @timeslot.status == "live"%>
         <%= form_tag "/timeslot/#{params[:id]}/bids", remote: true, id: "comment_form", authenticity_token: true do %>
-          <%= number_field_tag :price, nil, id: "bid_price", class: "form-control text_box" %><br>
-          <%= submit_tag "Add a Bid", id: "submit_comment", data: { confirm: 'Are you sure?' }, class:"btn btn-secondary btn-lg btn-block"%>
+          
+
+          <div class="input-group mb-3">
+            <%= number_field_tag :price, nil, id: "bid_price", class: "form-control text_box" %>
+            <div class="input-group-append">
+              <%= submit_tag "Add Bid", id: "submit_comment", data: { confirm: "Are You Sure?"  }, class:"btn btn-secondary btn"%>
+            </div>
+          </div>
+
+
+
+
+
         <% end %>
       <%else%>
         <%= number_field_tag :price, nil, id: "bid_price", class: "form-control text_box", disabled:"" %>
