@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   post "/timeslot/:id/bids" => "bids#create", as: "bid_create"
   post "/timeslots/search" => "timeslots#search", as: "search_timeslots"
   post "/boards/search" => "boards#search", as: "search_boards"
+  post "/billboards/search" => "billboards#search", as: "search_billboards"
 
   mount ActionCable.server, at: '/cable'
 

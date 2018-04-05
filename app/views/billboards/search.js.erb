@@ -1,0 +1,17 @@
+$("#timeslots").html("");
+$("<%= j render(partial:'timeslots/timeslots', locals: {timeslots: @timeslots, user: @user})%>").appendTo("#timeslots");
+
+setMapOnAll(null);
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 13, 
+  center: new google.maps.LatLng(<%=@average_lat%>, <%=@average_long%>) 
+})
+var markers = [];
+<%@boards.each do |board|%>
+  var marker = new google.maps.Marker({
+    position: {lat:<%=board.latitude%>, lng:<%=board.longitude%>},
+    map: map
+  });
+  markers.push(marker);
+<%end%>
+

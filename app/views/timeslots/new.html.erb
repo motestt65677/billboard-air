@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-      <h1>New Auction</h1>
       <%=form_for [@board, @timeslot] do |f|%>
+        <h1>Advertisement Duration</h1>
         <div>
           <%=f.label :start_date%><br>
           <%=f.date_field :start_date, class:"text_box"%>
@@ -12,6 +12,14 @@
           <%=f.label :end_date%><br>
           <%=f.date_field :end_date, class:"text_box"%>
         </div>
+        <hr>
+        <h1>Auction Details</h1>
+        <div>
+          <p>Please select a time you would like your auction to be held. Auction for your board will last for 1 week and end at midnight of the eighth day</p>
+          <%=f.label :start_date%><br>
+          <%=f.date_field :auction_start, class:"text_box"%>
+        </div>
+
         <div>
           <%=f.label "starting price"%><br>
           <%=f.number_field :current_price, class:"text_box"%>

@@ -74,7 +74,14 @@ street_name = [
 
 # end
 
-Board.all.each do |board|
-  board.location = street_name.sample
-  board.save
+# Board.all.each do |board|
+#   board.location = street_name.sample
+#   board.save
+# end
+
+number = (-10..10).to_a
+
+Timeslot.all.each do |timeslot|
+  timeslot.auction_start = Date.today + number.sample
+  timeslot.save
 end
