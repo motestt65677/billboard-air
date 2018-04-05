@@ -43,8 +43,6 @@ gem "fog-aws"
 gem 'fog'
 gem 'redis'
 gem 'geocoder'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
-gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,10 +52,10 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem "database_cleaner"
   gem "rspec-rails"
-  gem "selenium-webdriver"
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'whenever', require: false
 end
 
 group :development do
