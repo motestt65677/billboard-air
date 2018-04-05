@@ -34,19 +34,19 @@ class TimeslotsController < ApplicationController
   def search
     @user = current_user
 
-
     if params[:search_result] == ""
-      @boards = Board.all
+      @boards = @user.boards
     else
-      @boards = Board.search_by_title_and_description(params[:search_result])
+      @boards = @user.boards.search_by_title_and_description(params[:search_result])
     end
-    
+
     @timeslots = []
     @boards.each do |board|
       board.timeslots.each do |timeslot|
         @timeslots << timeslot
       end
     end
+
     @timeslots = Timeslot.where(id: @timeslots.map(&:id)).order("
       CASE
         WHEN status = 'live' THEN '1'
@@ -55,8 +55,6 @@ class TimeslotsController < ApplicationController
       END"
     )
 
-    @average_lat = Board.average_lat(@boards)
-    @average_long = Board.average_long(@boards)
   end
 
   private
