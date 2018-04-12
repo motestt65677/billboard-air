@@ -35,7 +35,8 @@
 
 .navbar {
   background-color: #563d7c;
-  height: 7em;
+  min-height: em;
+  height: auto;
 }
 .navbar .navbar-brand {
   color: #ffffff;
