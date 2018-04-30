@@ -1,4 +1,5 @@
 module SessionsHelper
+  
   def signed_in?
     if User.find_by_id(session[:user_id])
       true
@@ -12,6 +13,6 @@ module SessionsHelper
   end
 
   def current_user
-    User.find_by_id(session[:user_id])
+    user = User.find_by_id(session[:user_id])
   end
 end

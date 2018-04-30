@@ -1,5 +1,5 @@
   <div class="container mt-10">
-    <%=form_for [@user, @board], :html => {class: "block"} do |f|%>
+    <%=form_for [current_user, Board.new], :html => {class: "block"} do |f|%>
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8">

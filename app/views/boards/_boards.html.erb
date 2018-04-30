@@ -6,7 +6,7 @@
         <p><strong>Location: </strong> <%=board.location%></p>
       <%end%>
       <p>&nbsp</p>
-      <%if @user == board.user%>
+      <%if user == board.user%>
         <p> <%=link_to "edit", edit_user_board_path(board.user, board), class:"btn btn-outline-primary btn-block"%></p>
         <p> <%= link_to 'Delete',
               user_board_path(board.user, board), 
@@ -16,3 +16,4 @@
     </div>
   <%end%> 
 </div>
+

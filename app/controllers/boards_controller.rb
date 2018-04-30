@@ -1,14 +1,13 @@
 class BoardsController < ApplicationController
   before_action :require_login
+  before_action :find_board, only:[:show, :edit, :update, :destroy]
+
 
   def index
     @boards = Board.where(user_id: params[:user_id]).includes(:user)
-    @user = current_user
   end
 
   def new
-    @board = Board.new()
-    @user = current_user
   end
 
   def create
@@ -24,16 +23,13 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find(params[:id])
   end
 
   def edit
-    @board = Board.find(params[:id])
     @user = @board.user
   end
   
   def update
-    board = Board.find(params[:id])
     board.update_attributes(board_params)
 
     if board.save
@@ -46,7 +42,6 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    board = Board.find(params[:id])
     user = board.user
     if board.destroy
       flash[:notice] = "billboard successfully deleted"
@@ -65,6 +60,7 @@ class BoardsController < ApplicationController
   end
 
   private
+  
   def require_login
     user = User.find_by_id(session[:user_id])
     if !user
@@ -76,4 +72,10 @@ class BoardsController < ApplicationController
   def board_params
     params.require(:board).permit(:title, :description, :location, {images:[]})
   end
+
+  def find_board
+    @board = Board.find(params[:id])
+  end
+
 end
+

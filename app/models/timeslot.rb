@@ -29,4 +29,5 @@ class Timeslot < ApplicationRecord
         self.status = "live"
       end
   end
+
 end
