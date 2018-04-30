@@ -10,6 +10,6 @@
   </div>
 
   <div id="boards">
-    <%=render partial: "boards", locals: {boards: @boards}%>
+    <%=render partial: "boards", locals: {boards: @boards, user: current_user}%>
   </div>
 </div>

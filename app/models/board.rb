@@ -26,9 +26,20 @@ class Board < ApplicationRecord
     total_long/boards.count
   end
 
+  def self.find_timeslot_array(boards)
+    timeslots = []
+    boards.each do |board|
+      board.timeslots.each do |timeslot|
+        timeslots << timeslot
+      end
+    end
+    return timeslots
+  end
+  
   def format_location(address)
     self.location = "#{address[:street_address]}, #{address[:district]}, #{address[:city]}, #{address[:country]}"
   end
+
 
     
 
