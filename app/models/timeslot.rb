@@ -21,13 +21,27 @@ class Timeslot < ApplicationRecord
     (self.auction_end - Date.today).to_i
   end
   def auction_status
-      if self.auction_start > Date.today
-        self.status = "pending"
-      elsif self.auction_end < Date.today
-        self.status = "end"
-      else 
-        self.status = "live"
-      end
+    if self.auction_start > Date.today
+      self.status = "pending"
+    elsif self.auction_end < Date.today
+      self.status = "end"
+    else 
+      self.status = "live"
+    end
+  end
+
+  def check_bid_price(new_price)
+    if new_price.to_f <= self.current_price.to_f
+      return false
+    else
+      return true
+    end
+  end
+
+
+  def update_bid_price(new_price)
+    self.current_price = new_price
+    self.save
   end
 
 end
